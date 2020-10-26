@@ -1,8 +1,12 @@
-package com.deathbonus.todolist3;
+package com.deathbonus.todolist3.controllers;
 
 import java.util.HashMap;
 import java.util.UUID;
 
+import com.deathbonus.todolist3.services.TaskService;
+import com.deathbonus.todolist3.services.TasklistService;
+import com.deathbonus.todolist3.entities.Task;
+import com.deathbonus.todolist3.entities.Tasklist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

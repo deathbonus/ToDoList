@@ -1,4 +1,4 @@
-package com.deathbonus.todolist3;
+package com.deathbonus.todolist3.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

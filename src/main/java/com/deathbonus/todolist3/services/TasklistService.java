@@ -1,4 +1,6 @@
-package com.deathbonus.todolist3;
+package com.deathbonus.todolist3.services;
+import com.deathbonus.todolist3.entities.Tasklist;
+import com.deathbonus.todolist3.repositories.TasklistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,8 +1,7 @@
-package com.deathbonus.todolist3;
+package com.deathbonus.todolist3.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
