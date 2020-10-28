@@ -26,8 +26,8 @@ public class Tasklist {
     private int completeTasksCounter;
     @Column(name = "is_complete")
     private boolean isComplete;
-    @OneToMany(mappedBy = "tasklist")
-    private List<Task> tasks;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tasklist")
+    private List<Task> tasks = new ArrayList<Task>();
 
     protected Tasklist() {
     }
@@ -35,7 +35,7 @@ public class Tasklist {
     public Tasklist(String name) {
         this.name = name;
         creationDate = LocalDateTime.now();
-        tasks = new ArrayList<Task>();
+//        tasks = new ArrayList<Task>();
     }
 
     public UUID getId() {

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Table(name = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,8 +14,8 @@ public class Task {
     private LocalDateTime changeDate;
     private String name;
     private String description;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "tasks_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tasklist", referencedColumnName = "id")
     private Tasklist tasklist;
     @Enumerated(EnumType.ORDINAL)
     private Urgency urgency;
