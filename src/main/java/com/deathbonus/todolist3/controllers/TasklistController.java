@@ -10,11 +10,17 @@ import com.deathbonus.todolist3.entities.Tasklist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Java-док и для методов тоже
+ */
 @RestController
+// TODO: конроллему можно задать свой путь "/list"
 public class TasklistController {
     HashMap<UUID, Tasklist> tasklistHashMap = new HashMap<>();
     HashMap<UUID, Task> taskHashMap = new HashMap<>();
     private TasklistService tasklistService;
+
+    // TODO: для задач лучше сделать отдельный rest и там этот сервис заиспользовать
     private TaskService taskService;
 
     @Autowired
@@ -23,7 +29,12 @@ public class TasklistController {
         this.taskService = taskService;
     }
 
-    @PostMapping("api/tasklists")
+
+    // TODO: здесь и далее rest-ы и инетрфейсы сервисов нивего не должны знать о сущностях модели
+    //  для передачи и получени данных в виде объектов используют DTO (vjulyj в гугде спросить DTO зачем нужны)
+
+
+    @PostMapping("api/tasklists") // TODO: camelCase! и зачем здесь api? лишнее удлиннение пути
     public Tasklist taskList(@RequestParam(value = "name", defaultValue = "tasklist") String name) {
 //        TaskList taskList = new TaskList(name);
 //        tasklistService.create(taskList);
@@ -43,4 +54,7 @@ public class TasklistController {
     public Tasklist taskList(@PathVariable UUID id) {
         return tasklistService.getTasklist(id);
     }
+
+    // TODO: не ххватет методов по работе со списками
+    //  и метода показа всех списков с филтрацией, сортировкой и пагинацией
 }

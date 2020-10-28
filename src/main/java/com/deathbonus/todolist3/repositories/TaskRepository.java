@@ -5,5 +5,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.UUID;
 
+/**
+ * java-doc
+ */
 public interface TaskRepository extends PagingAndSortingRepository<Task, UUID> {
 }
