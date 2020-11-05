@@ -18,10 +18,8 @@ public class TasklistService {
         this.tasklistRepository = taskListRepository;
     }
 
-    public Tasklist createTaskList(String name) {
-        Tasklist taskList = new Tasklist(name);
-        tasklistRepository.save(taskList);
-        return taskList;
+    public Tasklist createTaskList(Tasklist taskList) {
+        return tasklistRepository.save(taskList);
     }
 
     public Tasklist getTasklist(UUID uuid) {

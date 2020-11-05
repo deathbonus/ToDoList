@@ -3,6 +3,8 @@ package com.deathbonus.todolist3.controllers;
 import java.util.HashMap;
 import java.util.UUID;
 
+import com.deathbonus.todolist3.dto.TaskListDTO;
+import com.deathbonus.todolist3.mapper.TaskListMapper;
 import com.deathbonus.todolist3.services.TaskService;
 import com.deathbonus.todolist3.services.TasklistService;
 import com.deathbonus.todolist3.entities.Task;
@@ -24,10 +26,10 @@ public class TasklistController {
     }
 
     @PostMapping("api/tasklists")
-    public Tasklist taskList(@RequestParam(value = "name", defaultValue = "tasklist") String name) {
+    public Tasklist taskList(@RequestBody TaskListDTO taskListDTO) {
 //        TaskList taskList = new TaskList(name);
 //        tasklistService.create(taskList);
-        return tasklistService.createTaskList(name);
+        return tasklistService.createTaskList(TaskListMapper.dtoToEntity(taskListDTO));
     }
 
     @PostMapping("api/tasklists/{id}")

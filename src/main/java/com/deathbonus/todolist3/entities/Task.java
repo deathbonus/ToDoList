@@ -1,16 +1,33 @@
 package com.deathbonus.todolist3.entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Getter
+@Setter
+@Accessors(chain = true)
+@NoArgsConstructor
 @Entity
 @Table(name = "tasks")
+@EntityListeners(AuditingEntityListener.class)
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @Column(nullable = false, updatable = false)
+    @CreatedDate
     private LocalDateTime creationDate;
+    @Column(nullable = false)
+    @LastModifiedDate
     private LocalDateTime changeDate;
     private String name;
     private String description;
@@ -21,9 +38,6 @@ public class Task {
     private Urgency urgency;
     private boolean isComplete;
 
-    protected Task() {
-    }
-
     public Task(String name, String description, Tasklist taskList) {
         this.name = name;
         this.description = description;
@@ -32,49 +46,7 @@ public class Task {
         taskList.putTask(this);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-        changeDate = LocalDateTime.now();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-        changeDate = LocalDateTime.now();
-    }
-
-    public Urgency getUrgency() {
-        return urgency;
-    }
-
-    public void setUrgency(Urgency urgency) {
-        this.urgency = urgency;
-    }
-
-    public boolean isComplete() {
-        return isComplete;
-    }
-
     public void switchStatus() {
         isComplete = !isComplete;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
-    public LocalDateTime getChangeDate() {
-        return changeDate;
     }
 }
